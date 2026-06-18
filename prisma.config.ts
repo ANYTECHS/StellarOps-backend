@@ -1,3 +1,5 @@
+import type { PrismaClientOptions } from '@prisma/client/runtime/library';
+
 const DATABASE_URL = process.env.DATABASE_URL;
 
 

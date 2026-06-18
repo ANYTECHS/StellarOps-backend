@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { enableApiVersioning } from './api-versioning';
 import { AppModule } from './app.module';
