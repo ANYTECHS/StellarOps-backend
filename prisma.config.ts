@@ -7,7 +7,7 @@ if (!DATABASE_URL) {
   );
 }
 
-const options: PrismaClientOptions = {
+const options = {
   datasources: {
     db: {
       url: DATABASE_URL,
