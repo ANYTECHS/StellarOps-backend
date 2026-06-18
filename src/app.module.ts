@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { RequestTrackerInterceptor } from './common';
 import { SampleFeatureModule } from './modules/sample-feature/sample-feature.module';
 import { PrismaService } from './prisma/prisma.service';
 
@@ -21,7 +23,14 @@ import { PrismaService } from './prisma/prisma.service';
     SampleFeatureModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService],
+  providers: [
+    AppService,
+    PrismaService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RequestTrackerInterceptor,
+    },
+  ],
   exports: [PrismaService],
 })
 export class AppModule {}
