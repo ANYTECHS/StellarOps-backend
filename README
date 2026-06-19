@@ -6,7 +6,7 @@ AI-powered automation engine for wallets, payments, and stablecoin workflows on 
 
 StellarOps helps users automate blockchain actions using simple rules and AI-powered workflows.
 Instead of manually tracking wallets, swaps, payments, and token activity, users can create automation rules that execute automatically.
-Examples:
+Examples:kiro
 • Auto-convert XLM to USDC when price drops
 • Send recurring USDC payroll
 • Save a percentage of incoming payments
