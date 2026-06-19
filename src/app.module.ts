@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { LoggerModule } from './common';
 import { PrismaService } from './prisma/prisma.service';
 
 @Module({
@@ -17,6 +18,7 @@ import { PrismaService } from './prisma/prisma.service';
           .default('development'),
       }),
     }),
+    LoggerModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
