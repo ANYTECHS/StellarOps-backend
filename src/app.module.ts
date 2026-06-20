@@ -3,8 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { SampleFeatureModule } from './modules/sample-feature/sample-feature.module';
+import { LoggerModule } from './common';
 import { PrismaService } from './prisma/prisma.service';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
@@ -16,9 +17,10 @@ import { PrismaService } from './prisma/prisma.service';
         NODE_ENV: Joi.string()
           .valid('development', 'production', 'test')
           .default('development'),
+        REDIS_URL: Joi.string().uri().required(),
       }),
     }),
-    SampleFeatureModule,
+    LoggerModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
