@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -23,7 +24,14 @@ import { RedisModule } from './redis/redis.module';
     LoggerModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService],
+  providers: [
+    AppService,
+    PrismaService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RequestTrackerInterceptor,
+    },
+  ],
   exports: [PrismaService],
 })
 export class AppModule {}
